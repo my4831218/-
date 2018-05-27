@@ -1,0 +1,42 @@
+pip\n 파이썬 모듈or패키지 설치 도구 //\n= 엔터
+pip install bs4\n << 치면 설치 bs4==html파싱 라이브러리
+pip install django~=1.11.0\n << 장고설치 // 장고는 프로젝트 안에 앱을 여러개 넣을 수 있음.
+//앱 넣는 디렉토리 중요  (cmd의 위치를 앱 넣는 폴더 디렉토리로 이동) // cd (디렉토리 경로) 하면 위치 이동됨
+django-admin startproject firstserver //폴더에 파일 생성됨
+cd firstserver // 폴더에 생성된 파일 디렉토리로 이동
+python manage.py startapp home // (장고 앱 만들기)홈이라는 폴더 생성 
+python manage.py runserver //
+cmd 아래에서 2번째창 주소가 생성된곳 드래그 복사  >>아마 요렇게 뜸//http://127.0.0.1:8000/ <<  인터넷에 치면
+it worked 페이지가 나옴 //우리 컴퓨터 서버로 장고 웹페이지가 생성된것임.
+비쥬얼 코드에서 폴더열기로 아까 만든 firstserver 폴더 열기
+settings.py
+urls.py
+views.py 3개 사용
+github참고하면 프로젝트와 app폴더 각각 어떤식으로 생성되었는지 확인가능
+
+비쥬얼 코드 (내 맘대로) ~ 에서
+settings.py에서 installed_apps맨밑에 'home' 추가
+
+
+urls.py에서 맨위 from들 밑에 from home import views 추가
+
+urlpatterns = [
+	url(r'^keyboard', views.keyboard), 추가
+]
+
+heme의 views.py에 함수추가 + from 들 맨위에 추가//
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+def keyboard(request):
+	return JsonResponese(
+	{
+		"type" : "text"
+	}
+	)
+모두 하면 주소/keyboard 들어가면 type text 출력. 
+
+파이썬모듈 장고//<<cmd에서 설치 비쥬얼코드//따로 파일 필요함
+아마존 웹서비스 가입하기(서버구축이 필요해서.)
